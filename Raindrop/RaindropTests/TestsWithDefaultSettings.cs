@@ -3,15 +3,11 @@ using RaindropApp;
 
 namespace RaindropTests
 {
-    public class RaindropsByDefaultShould
+    // Testing with default settings (not user defined) i.e factors 3,5,7
+    public partial class RaindropsByDefaultShould
     {
         private Raindrops _sut;
 
-        // Testing with default settings (not user defined) i.e factors 3,5,7
-        public RaindropsByDefaultShould()
-        {
-            _sut = new Raindrops();
-        }
         [Test]
         [Category("Default Settings")]
         [TestCase(15, "PlingPlang")]
@@ -19,6 +15,7 @@ namespace RaindropTests
         [TestCase(35, "PlangPlong")]
         public void ReturnCorrectString_WhenContainingMultipleFactors(int num, string expectedResult)
         {
+            _sut = new Raindrops();
             string result = _sut.Solve(num);
             Assert.That(result, Is.EqualTo(expectedResult));
         }
@@ -29,6 +26,7 @@ namespace RaindropTests
         [TestCase(22)]
         public void ReturnCorrectString_WhenDoesNotContainDefaultFactors(int num)
         {
+            _sut = new Raindrops();
             string result = _sut.Solve(num);
             Assert.That(result, Is.EqualTo(num.ToString()));
         }
@@ -39,6 +37,7 @@ namespace RaindropTests
         [TestCase(9, "Pling")]
         public void ReturnPling_WhenIsFactorOfThree_AndOnlyThree(int num, string expectedResult)
         {
+            _sut = new Raindrops();
             string result =  _sut.Solve(num);
             Assert.That(result, Is.EqualTo(expectedResult));
         }
@@ -49,6 +48,7 @@ namespace RaindropTests
         [TestCase(20, "Plang")]
         public void ReturnPling_WhenIsFactorOfFive_AndOnlyFive(int num, string expectedResult)
         {
+            _sut = new Raindrops();
             string result = _sut.Solve(num);
             Assert.That(result, Is.EqualTo(expectedResult));
         }
@@ -59,8 +59,9 @@ namespace RaindropTests
         [TestCase(28, "Plong")]
         public void ReturnPling_WhenIsFactorOfSeven_AndOnlySeven(int num, string expectedResult)
         {
+            _sut = new Raindrops();
             string result = _sut.Solve(num);
             Assert.That(result, Is.EqualTo(expectedResult));
-        }   
+        } 
     }
 }

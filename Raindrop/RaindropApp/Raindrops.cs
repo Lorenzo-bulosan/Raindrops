@@ -40,7 +40,7 @@ namespace RaindropApp
             Settings.Add(5, "Plang");
             Settings.Add(7, "Plong");
         }
-        // use user settings on overload
+        // using user defined settings on overload constructor
         public Raindrops(Dictionary<int, string> userSettings)
         {
             Settings = userSettings;
