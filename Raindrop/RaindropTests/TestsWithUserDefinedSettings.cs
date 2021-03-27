@@ -17,6 +17,42 @@ namespace RaindropTests
             _userSettings.Add(2, "Zing");
             _userSettings.Add(7, "Zang");
         }
+
+        [Test]
+        [Category("User Settings")]
+        public void ReturnZero_WhenInputIsZero()
+        {
+            _sut = new Raindrops(_userSettings);
+            string result = _sut.Solve(0);
+            Assert.That(result, Is.EqualTo("0"));
+        }
+
+        [Test]
+        [Category("User Settings")]
+        [TestCase(14, "ZingZang")]
+        [TestCase(-14, "ZingZang")]
+        [TestCase(28, "ZingZang")]
+        [TestCase(-28, "ZingZang")]
+        public void ReturnCompoundString_WhenContains_MultipleFactors(int num, string expectedResult)
+        {
+            _sut = new Raindrops(_userSettings);
+            string result = _sut.Solve(num);
+            Assert.That(result, Is.EqualTo(expectedResult));
+        }
+
+        [Test]
+        [Category("User Settings")]
+        [TestCase(-1)]
+        [TestCase(9)]
+        [TestCase(4637)]
+        [TestCase(-13217)]        
+        public void ReturnNumberAsString_WhenContains_NoFactors(int num)
+        {
+            _sut = new Raindrops(_userSettings);
+            string result = _sut.Solve(num);
+            Assert.That(result, Is.EqualTo(num.ToString()));
+        }
+
         [Test]
         [Category("User Settings")]
         [TestCase(2, "Zing")]
@@ -28,6 +64,7 @@ namespace RaindropTests
             string result = _sut.Solve(num);
             Assert.That(result, Is.EqualTo(expectedResult));
         }
+
         [Test]
         [Category("User Settings")]
         [TestCase(7, "Zang")]
@@ -38,36 +75,5 @@ namespace RaindropTests
             string result = _sut.Solve(num);
             Assert.That(result, Is.EqualTo(expectedResult));
         }
-        [Test]
-        [Category("User Settings")]
-        [TestCase(1)]
-        [TestCase(9)]
-        public void ReturnNumberAsString_WhenDoesNotContainFactors(int num)
-        {
-            _sut = new Raindrops(_userSettings);
-            string result = _sut.Solve(num);
-            Assert.That(result, Is.EqualTo(num.ToString()));
-        }
-        [Test]
-        [Category("User Settings")]
-        [TestCase(14, "ZingZang")]
-        [TestCase(-14, "ZingZang")]
-        [TestCase(28, "ZingZang")]        
-        [TestCase(-28, "ZingZang")]
-        public void ReturnCorrectString_WhenContainsCombinedFactors(int num, string expectedResult)
-        {
-            _sut = new Raindrops(_userSettings);
-            string result = _sut.Solve(num);
-            Assert.That(result, Is.EqualTo(expectedResult));
-        }
-        [Test]
-        [Category("User Settings")]
-        public void ReturnZero_WhenInputIsZero()
-        {
-            _sut = new Raindrops(_userSettings);
-            string result = _sut.Solve(0);
-            Assert.That(result, Is.EqualTo("0"));
-        }
-
     }
 }
