@@ -47,11 +47,11 @@ This project solves the challenge presented above and was approached with the SO
 There are many solutions to this challenge, one way to solve it is by using various if else statements. These can make the method difficult to follow, cluttering it many with conditional tests, making the method long and having many duplicate lines. My solution addresses these code smells by instead consisting of one conditional test and a helper method inside, within a loop.
 
 ```c#
-public string Solve(int num)
+public string Solve(int inputNum)
 {
     // edge cases: num is 0 and negatives
-    if (num == 0) return num.ToString();
-    num = Math.Abs(num);
+    if (inputNum == 0) return inputNum.ToString();
+    int num = Math.Abs(inputNum);
 
     for (int possibleFactor = 1; possibleFactor <= num; possibleFactor++)
     {
@@ -60,7 +60,7 @@ public string Solve(int num)
             Solution += GetRaindropSoundOrDefault(possibleFactor);
         }
     }
-    return Solution == "" ? num.ToString() : Solution;
+    return Solution == "" ? inputNum.ToString() : Solution;
 }
 ```
 
