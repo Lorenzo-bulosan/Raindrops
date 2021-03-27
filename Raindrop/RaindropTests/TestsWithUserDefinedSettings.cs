@@ -40,8 +40,20 @@ namespace RaindropTests
         }
         [Test]
         [Category("User Settings")]
+        [TestCase(1)]
+        [TestCase(9)]
+        public void ReturnNumberAsString_WhenDoesNotContainFactors(int num)
+        {
+            _sut = new Raindrops(_userSettings);
+            string result = _sut.Solve(num);
+            Assert.That(result, Is.EqualTo(num.ToString()));
+        }
+        [Test]
+        [Category("User Settings")]
         [TestCase(14, "ZingZang")]
-        [TestCase(28, "ZingZang")]
+        [TestCase(-14, "ZingZang")]
+        [TestCase(28, "ZingZang")]        
+        [TestCase(-28, "ZingZang")]
         public void ReturnCorrectString_WhenContainsCombinedFactors(int num, string expectedResult)
         {
             _sut = new Raindrops(_userSettings);
@@ -50,13 +62,11 @@ namespace RaindropTests
         }
         [Test]
         [Category("User Settings")]
-        [TestCase(1)]
-        [TestCase(9)]
-        public void ReturnNumberAsString_WhenDoesNotContainFactors(int num)
+        public void ReturnZero_WhenInputIsZero()
         {
             _sut = new Raindrops(_userSettings);
-            string result = _sut.Solve(num);
-            Assert.That(result, Is.EqualTo(num.ToString()));
+            string result = _sut.Solve(0);
+            Assert.That(result, Is.EqualTo("0"));
         }
 
     }

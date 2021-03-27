@@ -32,7 +32,6 @@ namespace RaindropApp
         private string Solution { get; set; } = "";
         private Dictionary<int, string> Settings { get; set; } = new Dictionary<int, string>();
 
-        // default settings on empty contructor
         public Raindrops()
         {
             Settings.Add(1, "");
@@ -40,14 +39,20 @@ namespace RaindropApp
             Settings.Add(5, "Plang");
             Settings.Add(7, "Plong");
         }
-        // using user defined settings on overload constructor
+
+        /// Overload constructor: User Defined factors        
         public Raindrops(Dictionary<int, string> userSettings)
         {
             Settings = userSettings;
         }
-        //
+
+        /// Method that returns a sound(string) depending on the factors of the input      
         public string Solve(int num)
         {
+            // edge cases: num is 0 and negatives
+            if (num == 0) return num.ToString();
+            num = Math.Abs(num);
+
             for (int possibleFactor = 1; possibleFactor <= num; possibleFactor++)
             {
                 if (IsFactor(possibleFactor, num))
@@ -57,12 +62,12 @@ namespace RaindropApp
             }
             return Solution == "" ? num.ToString() : Solution;
         }
-        //
+        /// helper method to test for factors
         private bool IsFactor(int possibleFactor, int num)
         {
             return num % possibleFactor == 0;
         }
-
+        /// helper method that returns correct sound for a given factor
         private string GetRaindropSoundOrDefault(int num)
         {
             return Settings.ContainsKey(num) ? Settings[num] : "";

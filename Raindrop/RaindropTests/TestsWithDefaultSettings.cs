@@ -7,18 +7,7 @@ namespace RaindropTests
     public partial class RaindropsByDefaultShould
     {
         private Raindrops _sut;
-
-        [Test]
-        [Category("Default Settings")]
-        [TestCase(15, "PlingPlang")]
-        [TestCase(21, "PlingPlong")]
-        [TestCase(35, "PlangPlong")]
-        public void ReturnCorrectString_WhenContainingMultipleFactors(int num, string expectedResult)
-        {
-            _sut = new Raindrops();
-            string result = _sut.Solve(num);
-            Assert.That(result, Is.EqualTo(expectedResult));
-        }
+        
         [Test]
         [Category("Default Settings")]
         [TestCase(1)]
@@ -62,6 +51,28 @@ namespace RaindropTests
             _sut = new Raindrops();
             string result = _sut.Solve(num);
             Assert.That(result, Is.EqualTo(expectedResult));
-        } 
+        }
+        [Test]
+        [Category("Default Settings")]
+        [TestCase(15, "PlingPlang")]
+        [TestCase(-15, "PlingPlang")]
+        [TestCase(21, "PlingPlong")]
+        [TestCase(-21, "PlingPlong")]
+        [TestCase(35, "PlangPlong")]
+        [TestCase(-35, "PlangPlong")]
+        public void ReturnCorrectString_WhenContainingMultipleFactors(int num, string expectedResult)
+        {
+            _sut = new Raindrops();
+            string result = _sut.Solve(num);
+            Assert.That(result, Is.EqualTo(expectedResult));
+        }
+        [Test]
+        [Category("Default Settings")]
+        public void ReturnZero_WhenInputIsZero()
+        {
+            _sut = new Raindrops();
+            string result = _sut.Solve(0);
+            Assert.That(result, Is.EqualTo("0"));
+        }
     }
 }
