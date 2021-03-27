@@ -27,19 +27,32 @@ You will be assessed on the quality of your code, functional correctness, and yo
 
 namespace RaindropApp
 {
-    public static  class Raindrops
+    public  class Raindrops
     {
         
-        public static string Solution { get; set; } = "";
+        public string Solution { get; set; } = "";
+        private Dictionary<int, string> _Settings { get; set; }
 
-        public static Dictionary<int, string> Settings { get; set; }
+        // default settings on empty contructor
+        public Raindrops()
+        {
+            _Settings.Add(3, "Pling");
+            _Settings.Add(5, "Plang");
+            _Settings.Add(7, "Plong");
+        }
+
+        // use user settings on overload
+        public Raindrops(Dictionary<int, string> userSettings)
+        {
+            _Settings = userSettings;
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="num"></param>
         /// <returns></returns>
-        public static string Solve(int upperBound)
+        public string Solve(int upperBound)
         {
             for (int currentNumber = 0; currentNumber < upperBound; currentNumber++)
             {
@@ -55,7 +68,7 @@ namespace RaindropApp
         /// <param name="numToCheck"></param>
         /// <param name="factor"></param>
         /// <returns></returns>
-        private static string ReturnStringWhenModZero(string rainDropSound, int numToCheck, int factor)
+        private string ReturnStringWhenModZero(string rainDropSound, int numToCheck, int factor)
         {
             return numToCheck % factor == 0  ? rainDropSound : numToCheck.ToString();
         }
