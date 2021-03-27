@@ -62,11 +62,13 @@ namespace RaindropApp
             }
             return Solution == "" ? num.ToString() : Solution;
         }
+
         /// helper method to test for factors
         private bool IsFactor(int possibleFactor, int num)
         {
             return num % possibleFactor == 0;
         }
+
         /// helper method that returns correct sound for a given factor
         private string GetRaindropSoundOrDefault(int num)
         {
