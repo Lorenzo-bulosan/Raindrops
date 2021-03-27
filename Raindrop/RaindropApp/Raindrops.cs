@@ -47,11 +47,11 @@ namespace RaindropApp
         }
 
         /// Method that returns a sound(string) depending on the factors of the input      
-        public string Solve(int num)
+        public string Solve(int inputNum)
         {
             // edge cases: num is 0 and negatives
-            if (num == 0) return num.ToString();
-            num = Math.Abs(num);
+            if (inputNum == 0) return inputNum.ToString();
+            int num = Math.Abs(inputNum);
 
             for (int possibleFactor = 1; possibleFactor <= num; possibleFactor++)
             {
@@ -60,7 +60,7 @@ namespace RaindropApp
                     Solution += GetRaindropSoundOrDefault(possibleFactor);
                 }
             }
-            return Solution == "" ? num.ToString() : Solution;
+            return Solution == "" ? inputNum.ToString() : Solution;
         }
 
         /// helper method to test for factors
