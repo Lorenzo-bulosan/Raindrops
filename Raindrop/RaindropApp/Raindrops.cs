@@ -40,13 +40,11 @@ namespace RaindropApp
             Settings.Add(5, "Plang");
             Settings.Add(7, "Plong");
         }
-
         // use user settings on overload
         public Raindrops(Dictionary<int, string> userSettings)
         {
             Settings = userSettings;
         }
-
         //
         public string Solve(int num)
         {
@@ -59,7 +57,6 @@ namespace RaindropApp
             }
             return Solution == "" ? num.ToString() : Solution;
         }
-
         //
         private bool IsFactor(int possibleFactor, int num)
         {
