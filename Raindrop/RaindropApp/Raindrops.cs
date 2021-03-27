@@ -27,50 +27,48 @@ You will be assessed on the quality of your code, functional correctness, and yo
 
 namespace RaindropApp
 {
-    public  class Raindrops
+    public class Raindrops
     {
-        
-        public string Solution { get; set; } = "";
-        private Dictionary<int, string> _Settings { get; set; }
+        private string Solution { get; set; } = "";
+        private Dictionary<int, string> Settings { get; set; } = new Dictionary<int, string>();
 
         // default settings on empty contructor
         public Raindrops()
         {
-            _Settings.Add(3, "Pling");
-            _Settings.Add(5, "Plang");
-            _Settings.Add(7, "Plong");
+            Settings.Add(1, "");
+            Settings.Add(3, "Pling");
+            Settings.Add(5, "Plang");
+            Settings.Add(7, "Plong");
         }
 
         // use user settings on overload
         public Raindrops(Dictionary<int, string> userSettings)
         {
-            _Settings = userSettings;
+            Settings = userSettings;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="num"></param>
-        /// <returns></returns>
-        public string Solve(int upperBound)
+        //
+        public string Solve(int num)
         {
-            for (int currentNumber = 0; currentNumber < upperBound; currentNumber++)
+            for (int possibleFactor = 1; possibleFactor <= num; possibleFactor++)
             {
-                
+                if (IsFactor(possibleFactor, num))
+                {
+                    Solution += GetRaindropSoundOrDefault(possibleFactor);
+                }
             }
-            return Solution;
+            return Solution == "" ? num.ToString() : Solution;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="rainDropSound"></param>
-        /// <param name="numToCheck"></param>
-        /// <param name="factor"></param>
-        /// <returns></returns>
-        private string ReturnStringWhenModZero(string rainDropSound, int numToCheck, int factor)
+        //
+        private bool IsFactor(int possibleFactor, int num)
         {
-            return numToCheck % factor == 0  ? rainDropSound : numToCheck.ToString();
+            return num % possibleFactor == 0;
+        }
+
+        private string GetRaindropSoundOrDefault(int num)
+        {
+            return Settings.ContainsKey(num) ? Settings[num] : "";
         }
     }
 }
