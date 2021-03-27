@@ -9,8 +9,8 @@ namespace RaindropApp
         {
             Console.WriteLine("======== Raindrops ====");
 
-            Raindrops Raindrops = new Raindrops();
-            Console.WriteLine(Raindrops.Solve(15));
+            Console.WriteLine("Welcome to the challenge's solution");
+            Console.WriteLine("See the README.md for more information");
         }
     }
 }
