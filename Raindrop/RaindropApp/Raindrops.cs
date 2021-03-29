@@ -19,10 +19,6 @@ Write a function that takes as its input a number (n) and converts it to a strin
 - 28's factors are 1, 2, 4, 7, 14 and 28: this would be a simple 'Plong'
 - 30's factors are 1, 2, 3, 5, 6, 10, 15, 30: this would be a 'PlingPlang'
 - 34 has four factors: 1, 2, 17, and 34: this would be '34'
-
-This test can be completed in a language of your choice and should be made available on your Github account in a public repository that does not mention Deloitte. You should write tests to cover your expected range of inputs and outputs. Commit often and document well.
-
-You will be assessed on the quality of your code, functional correctness, and your approach to quality assurance and testing.
  */
 
 namespace RaindropApp
